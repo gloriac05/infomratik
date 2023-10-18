@@ -8,13 +8,17 @@ import java.util.Random;
             Random random = new Random();
             int randomNumber= random.nextInt(100);
 
-            if ((randomNumber > 50) && (randomNumber < 90)) {
+            System.out.println(randomNumber);
+            if (randomNumber < 20){
+                System.out.println("Mini");
 
-            } else if (randomNumber < 10) {
+            } else if (randomNumber > 20 && randomNumber < 50 ){
+                System.out.println("Medium");
 
-            } else {
+            } else if (randomNumber > 50) {
+                System.out.println("Large");
 
-
+            }
                 // Gib die Zufallszahl aus
 
                 // Wenn die Zahl kleiner ist als 20  gib aus "Mini"
@@ -22,8 +26,6 @@ import java.util.Random;
                 // Wenn die Zahl größer als 50 ist gib aus "Large"
 
 
-            }
+
         }
     }
-
-
