@@ -1,5 +1,4 @@
 package at.gloriac.basis;
-
 import java.util.Random;
 
 public class ControlStructures3_while {
