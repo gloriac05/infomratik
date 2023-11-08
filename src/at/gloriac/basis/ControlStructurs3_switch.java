@@ -6,7 +6,7 @@ public class ControlStructurs3_switch {
     public static void main(String[] args) {
 
         Random random = new Random();
-        int randomNumber = random.nextInt(11);
+        int randomNumber = random.nextInt(11) ;
 
        switch (randomNumber){
              case 1:
