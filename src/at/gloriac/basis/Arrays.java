@@ -34,17 +34,25 @@ public class Arrays {
         StringBuffer encrypted = new StringBuffer();
         for (int i = 0; i < text.length(); i++) {
             char cur = text.charAt(i);
-            for (int j = 0; j < this.chArray.length; j++) { if (cur == this.chArray[j]) { int pos = j + getSwitchIt(); if (pos >= this.chArray.length) {
+            for (int j = 0; j < this.chArray.length; j++) {
+
+            if (cur == this.chArray[j]) {
+
+            int pos = j + getSwitchIt();
+                if (pos >= this.chArray.length) {
                 pos -= this.chArray.length;
             }
+
             else if (pos < 0) {
                 pos += this.chArray.length;
             }
                 cur = this.chArray[pos];
                 break;
+
             }
             }
             encrypted.append(cur);
+
         }
         return encrypted.toString();
     }
