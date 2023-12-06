@@ -1,83 +1,43 @@
 package at.gloriac.basis;
+
+import java.util.Scanner;
 public class Arrays {
-    private int switchIt = -1;
-    private char[] chArray = null;
 
-    public Arrays() {
-        this(3);
+    public static void main(String[] args) {
+        System.out.println("Den Text eingeben, der ver- und entschlüsselt werden soll:");
+
+        String input = new Scanner(System.in).nextLine();
+        String encrypted = encrypt(input);
+
+        System.out.println("Verschlüsselt: " + encrypted);
     }
 
-    public Arrays(int switchIt) {
+    public static String rotate(String string, int menge) {  // Eingabestring in Kleinbuchstaben umwandeln und in ein char Array schreiben
 
-        this.chArray = createArray();
-        setSwitchIt(switchIt);
-    }
+        char[] temp = string.toLowerCase().toCharArray();
 
-    public int getSwitchIt() {
-        return this.switchIt;
-    }
+        // Alle Buchstaben im char Array durchgehen
+        for (int i = 0; i < temp.length; i++) {        // Zeichen nur umwandeln, wenn es Buchstaben sind (also keine Zahlen oder Satzzeichen umwandeln)!
 
-    public void setSwitchIt(int switchIt) {
-        this.switchIt = switchIt;
-    }
+            if (temp[i] >= 'a' && temp[i] <= 'z') {    // Buchstaben um die gewünschte Anzahl verändern
+                temp[i] += menge;
 
-    public String decrypt(String text) {
 
-        setSwitchIt(getSwitchIt() * -1);
-        text = encrypt(text);
-        setSwitchIt(getSwitchIt() * -1);
-        return text;
-    }
-
-    public String encrypt(String text) {
-
-        StringBuffer encrypted = new StringBuffer();
-        for (int i = 0; i < text.length(); i++) {
-            char cur = text.charAt(i);
-            for (int j = 0; j < this.chArray.length; j++) {
-
-            if (cur == this.chArray[j]) {
-
-            int pos = j + getSwitchIt();
-                if (pos >= this.chArray.length) {
-                pos -= this.chArray.length;
+                if (temp[i] < 'a') {            // Falls Alphabeth zu Ende ist, wird wieder am Anfang begonnen
+                    temp[i] += 26;
+                } else if (temp[i] > 'z') {
+                    temp[i] -= 26;
+                }
             }
-
-            else if (pos < 0) {
-                pos += this.chArray.length;
-            }
-                cur = this.chArray[pos];
-                break;
-
-            }
-            }
-            encrypted.append(cur);
-
         }
-        return encrypted.toString();
+
+        return new String(temp);  // char Array wieder in einen String umwandeln und zurückgeben
     }
 
-    public char[] createArray() {
+    public static String encrypt(String string) {
 
-        char[] ch = new char[26 + 26 + 10 + 33 + 6];
-        int pos = 0;
-        for (int i = 32; i < 127; i++) {
-            ch[pos++] = (char)i;
-        }
-        ch[pos++] = 'ä';
-        ch[pos++] = 'ö';
-        ch[pos++] = 'ü';
-        ch[pos++] = 'Ä';
-        ch[pos++] = 'Ö';
-        ch[pos++] = 'Ü';
-        return ch;
+        return rotate(string, 2);
     }
 
-    public char[] getChArray() {
-        return this.chArray;
-    }
 
-    public void setChArray(char[] chArray) {
-        this.chArray = chArray;
-    }
 }
