@@ -17,7 +17,7 @@ public class Arrays {
         char[] temp = string.toLowerCase().toCharArray();
 
         // Alle Buchstaben im char Array durchgehen
-        for (int i = 0; i < temp.length; i++) {        // Zeichen nur umwandeln, wenn es Buchstaben sind (also keine Zahlen oder Satzzeichen umwandeln)!
+        for (int i = 0; i < temp.length; i++) {        // Zeichen nur umwandeln, wenn es Buchstaben sind!
 
             if (temp[i] >= 'a' && temp[i] <= 'z') {    // Buchstaben um die gewünschte Anzahl verändern
                 temp[i] += menge;
