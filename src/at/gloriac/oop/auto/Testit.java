@@ -38,6 +38,7 @@ public class Testit {
         System.out.println("Alle Autos ergeben eine Höhe von " +garage.getGesamtfahrzeugeUebereinander());
         garage.getAutoFarbe("rot");
         garage.getAutoLeistung(30,499);
+        garage.loescheAutofarbe("rot");
     }
 
 }

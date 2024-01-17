@@ -111,6 +111,20 @@ public class Garage {
 
     }
 
+    public void loescheAutofarbe(String farbe){
+        //aus der liste emtfernen
+        int counter =0;
+        for(int i=autoListe.size()-1;i>=0;i--){
+            if (autoListe.get(i).getsFarbe().equals(farbe)) {
+                autoListe.remove(i);
+                counter++;
+            }
+        }
+
+        System.out.println("Es wurden " + counter + " " + farbe + "Autos gelöscht");
+    }
+
+
 }
 
 
