@@ -54,24 +54,63 @@ public class Garage {
     public int getAutosinGarage() {
         return this.autoListe.size();
     }
-    public int getFreiePlaetze(){
+
+    public int getFreiePlaetze() {
         return this.stellplaetze - getAutosinGarage();
     }
 
-    public void addAutoGarage(Auto auto){
+    public void addAutoGarage(Auto auto) {
         //Abfrage ist auto höher als garage hoehe
-        if(auto.getFahrzeughoehe()>einfahrtshoehe){
-            System.out.println("Hoi, hast a hohes Auto, leider nid in dera Garage!!! Maxhöhe in der Garage "+this.getEinfahrtshoehe());
-        } else if(this.getFreiePlaetze()>0) {
+        if (auto.getFahrzeughoehe() > einfahrtshoehe) {
+            System.out.println("Hoi, hast a hohes Auto, leider nid in dera Garage!!! Maxhöhe in der Garage " + this.getEinfahrtshoehe());
+        } else if (this.getFreiePlaetze() > 0) {
             this.autoListe.add(auto);
-        } else{
+        } else {
             System.out.println("Ups, Garage keinen Platz mehr frei, versuche es später noch einmal!!");
         }
     }
 
-    public int getGesamtfahrzeugeUebereinander(){
-        int wert =0;
+
+    public int getGesamtfahrzeugeUebereinander() {
+        int wert = 0;
+
+        for (Auto a : autoListe) {
+            wert += a.getFahrzeughoehe();
+        }
 
         return wert;
     }
+
+    //Wir uchen nach Autos mit Farbe x
+
+    public void getAutoFarbe(String farbe) {
+        System.out.println("Folgende Autos mit Farbe " + farbe + "sind in der Liste");
+        for (Auto a : autoListe) {
+            if (a.getsFarbe().equals(farbe)) {
+                System.out.println(a.getInfoAuto());
+            }
+        }
+    }
+
+    //Wir suchen Autos mit Leistung von, bis
+    public void getAutoLeistung(int lmin, int lmax) {
+        int ch = 0;
+        if (lmin > lmax) {
+            ch = lmax;
+            lmin = lmax;
+            lmax = ch;
+
+        }
+        System.out.println("Folgende Autos mit der Leistung von " + lmin + "bis max " + lmax + "sind in der Liste");
+
+        for (Auto a : autoListe) {
+            if (a.getiLeistung() > lmin && a.getiLeistung() < lmax) {
+                System.out.println(a.getInfoAuto());
+            }
+        }
+
+    }
+
 }
+
+

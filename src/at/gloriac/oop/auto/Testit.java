@@ -32,8 +32,12 @@ public class Testit {
         for(Auto a: aAutoListe){
             System.out.println(a.getInfoAuto());
             garage.addAutoGarage(a);
-            System.out.println(garage.getStellplaetze()+ " stell - frei"+garage.getFreiePlaetze());
+            System.out.println(garage.getStellplaetze()+ " stell - frei "+garage.getFreiePlaetze());
         }
+
+        System.out.println("Alle Autos ergeben eine Höhe von " +garage.getGesamtfahrzeugeUebereinander());
+        garage.getAutoFarbe("rot");
+        garage.getAutoLeistung(30,499);
     }
 
 }
